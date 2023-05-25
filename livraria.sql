@@ -129,3 +129,19 @@ select l.titulo, l.valor, l.ano, a.nome, e.nome
 from livro l inner join assunto a inner join editora e
 on l.assunto = a.sigla and l.editora = e.codigo
 where e.nome = 'Pearson' and l.ano = 2014;
+
+# view para recuperar a soma de todos os livros agrupados pelo assunto:
+use livraria;
+create view adsex1
+as
+select a.nome, sum(l.valor) from assunto a inner join livro l on a.sigla=l.assunto group by l.assunto;
+
+select * from adsex1; #selecionando dados da VIEW
+
+select * from adsex1 order by nome;
+
+show tables; #mostra tabelas da base
+
+show full tables; #mostra as informações das tableas
+
+#drop view adsex1; para excluir a VIEW
